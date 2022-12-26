@@ -1,0 +1,10 @@
+    <h3> Kitty Comments: </h3>
+    <% @cat.comments.each do |comment| %>
+      <p> <a href="<%="/users/#{comment.user.id}"%>"><%= comment.user.username%></a>: </p>
+      <p> <%= comment.body %> </p>
+      <% if current_user == comment.user %>
+        <%= button_to 'Destroy this comment', comment_path(comment), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <% end %>
+    <% end %>
+
+    <%= render 'comments/form', comment: Comment.new, cat_id: @cat.id  %>

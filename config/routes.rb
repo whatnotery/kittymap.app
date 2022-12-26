@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  resources :comments
+  resources :cats
+  passwordless_for :users, at: '/', as: :auth
+  resources :users
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "cats#index" 
+  get '/sign_up', to: 'users#new' , constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'}
 end
