@@ -15,6 +15,3 @@
  */
  @import url('https://unpkg.com/leaflet@1.9.2/dist/leaflet.css');
 
- #map { 
-    height: 800px; 
-}
