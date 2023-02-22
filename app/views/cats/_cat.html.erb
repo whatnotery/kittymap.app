@@ -1,14 +1,13 @@
-<div id="<%= dom_id cat %>" class="">
+<div id="<%= dom_id cat %>" class="w-full items-center">
 
-  <p class="">
-   <h2> 
+   <h1> 
    <%= link_to cat.alias, cat, class: "" %>
-   </h2>
+   </h1>
      <% if action_name != "show" && (current_user.is_admin == true or current_user == cat.user) %>
     <%= link_to 'Edit this cat', edit_cat_path(cat), class: "" %>
 
   <% end %>
-  </p>
+
   <p class="">
   <% if cat.photo.representable? %>
         <%= image_tag cat.photo.representation(resize_to_limit: [250, 250]) %>

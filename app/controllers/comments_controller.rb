@@ -25,11 +25,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to @comment.cat, notice: "Comment was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +36,9 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
-        format.json { render :show, status: :ok, location: @comment }
+        format.html { redirect_to @comment.cat, notice: "Comment was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,8 +48,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to @comment.cat, notice: "Comment was successfully destroyed." }
     end
   end
 

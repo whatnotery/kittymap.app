@@ -1,9 +1,7 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import L from 'leaflet'
 
-
 var map = L.map('map').setView([38.0346, -84.5230], 13);
-
 
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -18,7 +16,22 @@ marker.bindPopup(`<strong>Cat:</strong> <a href="/cats/${i+1}">${catData[i+1]["a
 }
 
 
-L.DomEvent.on(map, 'click', function (ev) {
-    L.marker(mouseEventToLatLng('click')).addTo(map);
+map.on('click', function(e) {
 
-});
+    var lat = e.latlng.lat;
+    var lng = e.latlng.lng;
+
+    var newCatButton = document.getElementById('new-cat-button');
+    
+    // newCatButton.click();
+  
+    document.getElementById('cat_latitude').value = lat;
+    document.getElementById('cat_longitude').value = lng;
+
+    console.log('Latitude: ' + lat + ', Longitude: ' + lng);
+
+  });
+
+
+
+

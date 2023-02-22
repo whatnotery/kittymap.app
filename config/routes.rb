@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments, except: [:index]
   resources :cats
   passwordless_for :users, at: '/', as: :auth
-  resources :users
+  resources :users, except: [:index]
   # Defines the root path route ("/")
   root "cats#index" 
   get '/sign_up', to: 'users#new' , constraints: lambda { |req|
