@@ -1,9 +1,11 @@
 <script>
-
+<% i = 0 %>
 let catData = {
 <% @cats.each do |cat|%>
-<%= "#{cat.id}"%> :
+
+<%= "#{i += 1}"%> :
   <%= cat.to_json.html_safe %>,
+  
 <% end %>
 }  
 
