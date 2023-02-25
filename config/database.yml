@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: lexcats_production
-  username: lexcats
-  password: <%= ENV[‘DATABASE_URL’] %>
+  database: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
