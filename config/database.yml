@@ -83,4 +83,4 @@ production:
   <<: *default
   database: lexcats_production
   username: lexcats
-  password: <%= ENV["LEXCATS_DATABASE_PASSWORD"] %>
+  password: <%= ENV[‘DATABASE_URL’] %>
