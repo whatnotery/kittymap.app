@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments, except: [:index]
-  resources :cats
+  
+  resources :cats do
+    resources :comments, except: [:index, :show]
+  end
+
   passwordless_for :users, at: '/', as: :auth
   resources :users, except: [:index]
   # Defines the root path route ("/")

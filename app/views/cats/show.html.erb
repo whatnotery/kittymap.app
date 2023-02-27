@@ -6,7 +6,9 @@
 
     <%= render @cat %>
 
-    <%= render 'comments/comment_section' %>
+    <%= render @cat.comments %>
+
+    <%= render 'comments/form' =%>
 
     </div>
   </div>

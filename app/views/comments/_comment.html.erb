@@ -1,16 +1,11 @@
 <div id="<%= dom_id comment %>">
+
+
   <p class="my-5">
-    <strong class="block font-medium mb-1">Cat:</strong>
-    <%= comment.cat_id %>
+    <strong class="block font-medium mb-1"><%= comment.user == current_user ? 'You' : comment.user.username %>:</strong>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= comment.user_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
     <%= comment.body %>
   </p>
 
