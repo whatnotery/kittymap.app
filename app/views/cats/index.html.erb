@@ -1,28 +1,17 @@
-<script>
-<% i = 0 %>
-let catData = {
-<% @cats.each do |cat|%>
 
-<%= "#{i += 1}"%> :
-  <%= cat.to_json.html_safe %>,
-  
-<% end %>
-}  
-
-</script>
-
-    <div id="cats" class="float-left h-full w-1/4 flex-col overflow-auto">
-  
+<div id="cats" class="float-left h-full w-1/4 flex-col overflow-auto">
+  <%  if current_user.present? %>
     <%= link_to "New cat", new_cat_path, data: { turbo_frame: 'new-cat' }, id: "new-cat-button"%>
-
     <%= turbo_frame_tag "new-cat" %>
+  <% else %>
+    <%= link_to "Sign up", new_user_path %> 
+    <%= link_to "Sign In", "/sign_in" %>
+  <% end %>
+  <%= render @cats %>
+</div>
 
-      <%= render @cats %>
-    </div>
-
-    <div id='map' class="bw-5/10 h-full"></div>
-
-
+<%= js_map Cat.map_data, class: "w-3/4", height: "100vh", tooltips: {html: true, hover: false} %>
+ 
 
 
 
