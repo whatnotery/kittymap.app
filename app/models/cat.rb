@@ -8,13 +8,12 @@ class Cat < ApplicationRecord
     lat_lon_arr = []
     Cat.all.each do |cat|
       cat_hash =  Hash.new
-      cat_hash['latitude'] = cat.latitude
-      cat_hash['logitude'] = cat.longitude
-      cat_hash['label'] = cat.alias
-      cat_hash['tooltip'] = "<a href='/cat/#{cat.id}'>#{cat.alias}</a>"
-      lat_lon_arr << cat_hash.to_json
-      lat_lon_arr
+      cat_hash['latitude'] = cat.latitude.to_f
+      cat_hash['longitude'] = cat.longitude.to_f
+      cat_hash['tooltip'] = "😻 <a href='/cats/#{cat.id}'>#{cat.alias}</a> 😻"
+      lat_lon_arr << cat_hash
     end
+    return lat_lon_arr
   end
 
 

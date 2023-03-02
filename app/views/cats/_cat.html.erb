@@ -1,20 +1,15 @@
 <div id="<%= dom_id cat %>" class="w-full items-center">
 
    <h1> 
-   <%= link_to cat.alias, cat, class: "" %>
+   <%= link_to cat.alias, cat, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 2rem; hover: underline" %>
    </h1>
-     <p class="">
-    <strong class="">Spotted by:</strong>
-    <%= cat.user == current_user ? 'You' : cat.user.username %>
+    <p>
+      <strong class="">Spotted by:</strong>
+      <%= cat.user == current_user ? 'You' : cat.user.username %>
     </p>
-     <% if action_name != "show" && ( current_user == cat.user or current_user.is_admin == true  if current_user) %>
-    <%= link_to 'Edit this cat', edit_cat_path(cat), class: "" %>
-
-  <% end %>
-
   <p class="">
   <% if cat.photo.representable? %>
-        <%= image_tag cat.photo.representation(resize_to_limit: [250, 250]) %>
+        <%= image_tag cat.photo.representation(resize_to_limit: [250, 250]), class: "rounded-md" %>
         <%end%>
   </p>
 
@@ -23,7 +18,7 @@
     <%= cat.description %>
   </p>
 
-    <hr class="">
+  <hr class="">
 
 
 </div>
