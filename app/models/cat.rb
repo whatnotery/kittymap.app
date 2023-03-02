@@ -13,7 +13,11 @@ class Cat < ApplicationRecord
       cat_hash['tooltip'] = "😻 <a href='/cats/#{cat.id}'>#{cat.alias}</a> 😻"
       lat_lon_arr << cat_hash
     end
-    return lat_lon_arr
+    if Cat.all.empty?
+      return [{latitude: 38.0406, longitude: -84.5037}]
+    else
+      return lat_lon_arr
+    end
   end
 
 
