@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
 include Passwordless::ControllerHelpers
   helper_method :current_user
 
@@ -11,6 +10,12 @@ include Passwordless::ControllerHelpers
 
   def require_user!
     return if current_user
-    redirect_to root_path, flash: { error: 'You are not worthy!' }
+    redirect_to root_path, flash: { error: 'Please sign in' }
   end
 end
+
+
+
+
+
+e
