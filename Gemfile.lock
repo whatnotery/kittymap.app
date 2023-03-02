@@ -113,6 +113,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mapkick-rb (0.1.3)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -229,6 +230,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   leaflet-rails
+  mapkick-rb
   passwordless
   pg (~> 1.1)
   puma (~> 5.0)

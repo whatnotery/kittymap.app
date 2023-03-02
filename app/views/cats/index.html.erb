@@ -1,28 +1,21 @@
-<script>
-<% i = 0 %>
-let catData = {
-<% @cats.each do |cat|%>
 
-<%= "#{i += 1}"%> :
-  <%= cat.to_json.html_safe %>,
-  
-<% end %>
-}  
-
-</script>
-
-    <div id="cats" class="float-left h-full w-1/4 flex-col overflow-auto">
-  
-    <%= link_to "New cat", new_cat_path, data: { turbo_frame: 'new-cat' }, id: "new-cat-button"%>
-
-    <%= turbo_frame_tag "new-cat" %>
-
-      <%= render @cats %>
+<div id="cats" class="float-left h-full w-1/4 flex-col overflow-auto">
+    <%= image_tag '/assets/kittymapapp.png', alt: 'kittymap.app' %>
+    <div class='w-1/3 center text-center items-center px-10'>
+      <%  if current_user.present? %>
+        <%= link_to "New cat", new_cat_path, data: { turbo_frame: 'new-cat' }, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem", id: "new-cat-button"%>
+      <% else %>
+        <%= link_to "Sign up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton', sans-serif;" %> 
+        <%= link_to "Sign In", "/sign_in", style: "color:  #f92a82; font-family: 'Lekton', sans-serif;" %>
+      <% end %>
     </div>
+    <%= turbo_frame_tag "new-cat" %>
+    
+    <%= render @cats %>
+</div>
 
-    <div id='map' class="bw-5/10 h-full"></div>
-
-
+<%= js_map Cat.map_data, class: "w-3/4", height: "100vh", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
+ 
 
 
 

@@ -3,6 +3,16 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { :host => "https://kittymap.app/" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'smtp.improvmx.com',
+    user_name: ENV["MAIL_ADDRESS"] ,
+    password: ENV["MAIL_PASSWORD"],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
