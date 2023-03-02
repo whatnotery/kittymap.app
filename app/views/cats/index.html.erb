@@ -1,12 +1,14 @@
 
-<div id="cats" class="float-left h-full w-1/4 flex-col overflow-auto">
+<div id="cats" class="float-left h-full w-1/4 justify-around flex-col overflow-auto">
     <%= image_tag '/assets/kittymapapp.png', alt: 'kittymap.app' %>
     <div class='flex justify-around w-full'>
+    
       <%  if current_user.present? %>
         <%= link_to "New cat", new_cat_path, data: { turbo_frame: 'new-cat' }, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem", id: "new-cat-button"%>
+        <%= link_to "Sign Out", "/sign_out", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
       <% else %>
-        <%= link_to "Sign up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton', sans-serif;" %> 
-        <%= link_to "Sign In", "/sign_in", style: "color:  #f92a82; font-family: 'Lekton', sans-serif;" %>
+        <%= link_to "Sign In", "/sign_in", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
+        <%= link_to "Sign up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton';font-size: 1.75rem" %> 
       <% end %>
     </div>
     <%= turbo_frame_tag "new-cat" %>
