@@ -1,6 +1,6 @@
 
 <div id="cats" class="float-left h-full w-1/4 justify-around flex-col overflow-auto">
-    <%= image_tag '/assets/kittymapapp.png', alt: 'kittymap.app' %>
+    <%= image_tag asset_path("kittymapapp.png"), alt: 'kittymap.app' %>
     <div class='flex justify-around w-full'>
     
       <%  if current_user.present? %>
