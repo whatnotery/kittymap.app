@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to cat_url  }
+        format.html { redirect_to cats_url  }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
