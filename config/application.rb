@@ -15,7 +15,7 @@ module Lexcats
     config.load_defaults 7.0
 
 
-    config.middleware.insert_before 'ActionDispatch::Static', 'Rack::Cors' do
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
       allow do
         origins '*'
         resource '*', headers: :any,
