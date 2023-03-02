@@ -5,7 +5,7 @@ import {Turbo} from "@hotwired/turbo-rails"
 let lat
 let lon
 let address
-
+let cat_address
 navigator.geolocation.getCurrentPosition((position) => {
     lat = parseFloat(position.coords.latitude)
     lon = parseFloat(position.coords.longitude)
@@ -17,8 +17,6 @@ navigator.geolocation.getCurrentPosition((position) => {
     })
 
   });
-
-
 
 
   addEventListener("turbo:frame-load", (e) => {
