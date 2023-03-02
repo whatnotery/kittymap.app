@@ -13,9 +13,3 @@ include Passwordless::ControllerHelpers
     redirect_to root_path, flash: { error: 'Please sign in' }
   end
 end
-
-
-
-
-
-e
