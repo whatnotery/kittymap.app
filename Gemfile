@@ -35,6 +35,7 @@ gem "redis", "~> 4.0"
 gem "leaflet-rails"
 gem 'image_processing', '~> 1.2'
 gem "passwordless"
+gem 'cloudinary'
 gem "mapkick-rb"
 gem "rack-cors"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
