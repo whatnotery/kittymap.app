@@ -7,7 +7,7 @@
 
   <div class="my-5">
     <%= form.label :photo %>
-    <%= form.file_field :photo, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.file_field :photo, direct_upload: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
     <div class="my-5">
@@ -24,11 +24,11 @@
   </div>
 
   <div class="my-5">
-    <%= form.hidden_field :latitude, value: "0" ,class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.hidden_field :latitude, value: "" ,class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.hidden_field :longitude, value: "0", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.hidden_field :longitude, value: "", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

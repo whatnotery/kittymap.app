@@ -21,7 +21,7 @@ class CatsController < ApplicationController
 
   # POST /cats or /cats.json
   def create
-    @cat = Cat.new(cat_params)
+    @cat = Cat.new(cat_params.compact_blank )
     @cat.user_id = current_user.id
       if @cat.save
         redirect_to cats_url, notice: "Cat was successfully created." 
@@ -32,11 +32,7 @@ class CatsController < ApplicationController
 
   # PATCH/PUT /cats/1 or /cats/1.json
   def update
-    cat_params = params.reject {|k, v| v == ""}
-    if @cat.update(cat_params)
-      if params[:cat][:photo].present?
-          @cat.photo.attach(photo)
-      end
+    if @cat.update(cat_params.compact_blank)
       redirect_to cats_url, notice: "Cat was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
@@ -57,6 +53,6 @@ class CatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cat_params
-      params.require(:cat).permit(:alias, :photo, :description, :address ,:latitude, :longitude, :user_id)
+      params.require(:cat).permit(:alias, :description, :photo ,:address ,:latitude, :longitude, :user_id)
     end
 end
