@@ -53,6 +53,6 @@ class CatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cat_params
-      params.require(:cat).permit(:alias, :photo, :description, :latitude, :longitude, :user_id)
+      params.require(:cat).permit(:alias, :photo, :description, :address ,:latitude, :longitude, :user_id)
     end
 end
