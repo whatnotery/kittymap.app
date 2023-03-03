@@ -1,8 +1,8 @@
 
-<div id="cats" class="float-left h-full w-1/4 justify-around flex-col overflow-auto">
-    <%= image_tag asset_path("kittymapapp.png"), alt: 'kittymap.app' %>
+<div id="cats" class=" mx-auto w-full  flex-col ">
+   <div class='flex-row align-middle justify-around w-full'>
+    <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
     <div class='flex justify-around w-full'>
-    
       <%  if current_user.present? %>
         <%= link_to "New Cat", new_cat_path, data: { turbo_frame: 'new-cat' }, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem", id: "new-cat-button"%>
         <%= link_to "Sign Out", "/sign_out", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
@@ -10,14 +10,18 @@
         <%= link_to "Sign In", "/sign_in", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
         <%= link_to "Sign Up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton';font-size: 1.75rem" %> 
       <% end %>
+
+    </div>
     </div>
     <%= turbo_frame_tag "new-cat" %>
-    
+    <div class="container h-1/4">
+    <div class="flex-col overflow-scroll h-4/5">
     <%= render @cats %>
+    </div>
+</div>
 </div>
 
-<%= js_map Cat.map_data, height: "100vh", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
-
+<%= js_map Cat.map_data, class: "min-h-1/2", height: "50vh", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
 
 
 
