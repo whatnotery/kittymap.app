@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { :host => " " }
+  config.action_mailer.default_url_options = { :host => "kittymap.app " }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,
@@ -15,7 +15,7 @@ Rails.application.configure do
   }
   # Code is not reloaded between requests.
   config.cache_classes = true
-  config.hosts << "kittymap-app.onrender.com"
+  config.hosts << "kittymapapp-production.up.railway.app"
   config.hosts << "kittymap.app"
 
     # Eager load code on boot. This eager loads most of Rails and
