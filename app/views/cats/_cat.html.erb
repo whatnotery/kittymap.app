@@ -7,7 +7,7 @@
   <p class="">
   <% if cat.photo.representable? %>
     <% if Rails.env.production? %>
-        <%= cl_image_tag(cat.photo.key, width: 150, height: 100 ) %>
+        <%= cl_image_tag(cat.photo.key, width: 300, height: 250 ) %>
     <% else %>
         <%= image_tag cat.photo.representation(resize_to_limit: [250, 200]), class: "rounded-md" %>
     <% end %>
