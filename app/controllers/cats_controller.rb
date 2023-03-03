@@ -36,7 +36,6 @@ class CatsController < ApplicationController
       if params[:cat][:photo].present?
           cat.photo.attach(photo)
       end
-    end
       redirect_to cats_url, notice: "Cat was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
