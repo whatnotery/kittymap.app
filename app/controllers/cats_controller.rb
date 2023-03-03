@@ -34,7 +34,7 @@ class CatsController < ApplicationController
   def update
     if @cat.update(cat_params)
       if params[:cat][:photo].present?
-          cat.photo.attach(photo)
+          @cat.photo.attach(photo)
       end
       redirect_to cats_url, notice: "Cat was successfully updated." 
     else
