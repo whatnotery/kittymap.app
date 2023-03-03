@@ -33,6 +33,10 @@ class CatsController < ApplicationController
   # PATCH/PUT /cats/1 or /cats/1.json
   def update
     if @cat.update(cat_params)
+      if params[:cat][:photo].present?
+          cat.photo.attach(photo)
+      end
+    end
       redirect_to cats_url, notice: "Cat was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
