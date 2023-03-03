@@ -15,14 +15,14 @@ module Lexcats
     config.load_defaults 7.0
 
 
-=begin     config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any,
-                      methods: [:get, :post, :options, :delete, :head, :put],
-                      max_age: 0
-      end
-    end =end
+    # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', headers: :any,
+    #                   methods: [:get, :post, :options, :delete, :head, :put],
+    #                   max_age: 0
+    #   end
+    # end
     # Configuration for the application, engines, and railties goes here.
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
