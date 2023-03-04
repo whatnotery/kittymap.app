@@ -1,6 +1,6 @@
 
-<div id="cats" class=" mx-auto w-full  flex-col ">
-   <div class='flex-row align-middle justify-around w-full'>
+<div class="h-screen flex-col md:flex">
+<div id="cats" class="md:float-left h-full md:w-1/4 w-full justify-around flex-col overflow-auto">
     <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
     <div class='flex justify-around w-full'>
       <%  if current_user.present? %>
@@ -12,17 +12,13 @@
       <% end %>
 
     </div>
-    </div>
     <%= turbo_frame_tag "new-cat" %>
-    <div class="container h-1/4">
-    <div class="flex-col overflow-scroll h-4/5">
+    <div class="">
     <%= render @cats %>
     </div>
 </div>
+
+
+<%= js_map Cat.map_data, height:"100vh", width: "100%", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
+
 </div>
-
-<%= js_map Cat.map_data, class: "min-h-1/2", height: "50vh", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
-
-
-
-
