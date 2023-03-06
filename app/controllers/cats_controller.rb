@@ -33,7 +33,7 @@ class CatsController < ApplicationController
   # PATCH/PUT /cats/1 or /cats/1.json
   def update
     if @cat.update(cat_params.except(:address))
-      redirect_to cats_url, notice: "Cat was successfully updated." 
+      redirect_to cat_url(@cat), notice: "Cat was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
     end
