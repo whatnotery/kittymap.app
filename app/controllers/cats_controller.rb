@@ -3,7 +3,7 @@ class CatsController < ApplicationController
 
   # GET /cats or /cats.json
   def index
-    @cats = Cat.all
+    @cats = Cat.all.order(updated_at: :desc)
   end
 
   # GET /cats/1 or /cats/1.json
@@ -21,7 +21,7 @@ class CatsController < ApplicationController
 
   # POST /cats or /cats.json
   def create
-    @cat = Cat.new(cat_params.compact_blank )
+    @cat = Cat.new(cat_params.except(:address))
     @cat.user_id = current_user.id
       if @cat.save
         redirect_to cats_url, notice: "Cat was successfully created." 
@@ -32,7 +32,7 @@ class CatsController < ApplicationController
 
   # PATCH/PUT /cats/1 or /cats/1.json
   def update
-    if @cat.update(cat_params.compact_blank)
+    if @cat.update(cat_params.except(:address))
       redirect_to cats_url, notice: "Cat was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
@@ -53,6 +53,6 @@ class CatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cat_params
-      params.require(:cat).permit(:alias, :description, :photo ,:address ,:latitude, :longitude, :user_id)
+      params.require(:cat).permit(:alias, :description, :photo ,:latitude, :longitude, :user_id).compact_blank
     end
 end
