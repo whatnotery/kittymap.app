@@ -24,10 +24,13 @@
     <%= cat.description %>
   </p>
 
-  <% if action_name == 'show'  %>
-  <%= js_map [{latitude:"#{cat.latitude}", longitude:"#{cat.longitude}"}], height: "15vh", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
+  
+  <%= js_map [{latitude:"#{cat.latitude}", longitude:"#{cat.longitude}"}],
+  height: "15vh", 
+  markers: {color: "#47d2dc"}, 
+  tooltips: {html: true, hover: false}, 
+  style: "mapbox://styles/mapbox/light-v11" if action_name == 'show' %>
 
-   <% end %> 
 
   <hr class="pt-3">
 
