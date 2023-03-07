@@ -14,6 +14,8 @@ module Lexcats
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.assets.css_compressor = nil
+
 
     # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
     #   allow do

@@ -1,6 +1,7 @@
 
-<div class="h-screen flex-col md:flex">
+<div class="h-screen flex flex-col md:flex-row bg-background">
 <div id="cats" class="md:float-left h-full md:w-1/4 w-full justify-around flex-col overflow-auto">
+<nav class="sticky top-0 bg-background flex flex-col">
     <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
     <div class='flex justify-around w-full'>
       <%  if current_user.present? %>
@@ -10,8 +11,8 @@
         <%= link_to "Sign In", "/sign_in", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
         <%= link_to "Sign Up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton';font-size: 1.75rem" %> 
       <% end %>
-
     </div>
+    </nav>
     <%= turbo_frame_tag "new-cat" %>
     <div class="">
     <%= render @cats %>
