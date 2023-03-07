@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "meo@kittymap.app"
+  default from: "meow@kittymap.app"
   layout "mailer"
 end
