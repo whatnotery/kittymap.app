@@ -23,7 +23,6 @@ addEventListener("turbo:frame-load", (e) => {
     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
       .then((response) => response.json())
       .then((data) => {
-        wait(2)
         address = blankIfNull(data['address']['house_number']) + " " + data['address']['road'];
         cat_address.value = blankIfNull(data['address']['house_number']) + " " + data['address']['road'];
 
