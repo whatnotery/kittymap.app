@@ -12,8 +12,8 @@
         <%= link_to "Sign Up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton';font-size: 1.75rem" %> 
       <% end %>
     </div>
+    <%= turbo_frame_tag "new-cat", target: "_top" %>
     </nav>
-    <%= turbo_frame_tag "new-cat" %>
     <div class="">
     <%= render @cats %>
     </div>
