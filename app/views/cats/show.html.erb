@@ -9,7 +9,7 @@
     <%= turbo_frame_tag "edit-cat", target: "_top" %>
     <%= render @cat.comments %>
 
-    <%= render 'comments/form' =%>
+    <%= render 'comments/form' if current_user =%>
 
     </div>
   </div>
