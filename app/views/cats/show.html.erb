@@ -3,7 +3,7 @@
 
     <%= render @cat %>
 
-    <% if current_user and (current_user.is_admin or current_user == cat.user)  %>
+    <% if current_user and (current_user.is_admin or current_user == @cat.user)  %>
       <%= link_to 'Edit cat', edit_cat_path(@cat), data: { turbo_frame: 'edit-cat' }, class: "" %>
     <% end %>
     <%= turbo_frame_tag "edit-cat", target: "_top" %>
