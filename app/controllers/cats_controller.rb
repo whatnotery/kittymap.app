@@ -33,7 +33,7 @@ class CatsController < ApplicationController
   # PATCH/PUT /cats/1 or /cats/1.json
   def update
     if @cat.update(cat_params.except(:address))
-      redirect_to cat_url(@cat), notice: "Cat was successfully updated." 
+      redirect_to cat_url(@cat.alias), notice: "Cat was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
     end
@@ -48,7 +48,7 @@ class CatsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cat
-      @cat = Cat.find(params[:id])
+      @cat = Cat.find_by(alias: params[:alias])
     end
 
     # Only allow a list of trusted parameters through.

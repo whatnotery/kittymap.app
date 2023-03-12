@@ -1,7 +1,10 @@
 <div id="<%= dom_id cat %>" class="">
 
-   <h1> 
-   <%= link_to cat.alias, cat, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 2rem; hover: underline" %>
+   <h1 class="inline" style="color:  #f92a82; font-family: 'Lekton'; font-size: 2rem; hover: underline"> 
+   <%= link_to cat.alias, cat_path(cat.alias), style: "color:  #f92a82; font-family: 'Lekton'; font-size: 2rem; hover: underline" %>
+   <% if current_user and (current_user.is_admin or current_user == @cat.user)  %>
+      <%= link_to icon('fa fa-pencil-square-o', 'edit') , edit_cat_path(@cat.alias), data: { turbo_frame: 'edit-cat' }, class: "" %>
+    <% end %>
    </h1>
 
   <p class="">
@@ -19,7 +22,7 @@
     <% if current_user and current_user == cat.user %>
     You
     <% else %>
-    <%= link_to cat.user.username, user_path(cat.user.id) %>
+    <%= link_to cat.user.username, user_path(cat.user.username) %>
     <% end %>
     <br>
     <strong class="text-slateblue font-lekton">Description:</strong><br>
