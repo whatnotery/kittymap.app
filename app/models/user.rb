@@ -7,5 +7,10 @@ class User < ApplicationRecord
     uniqueness: { case_sensitive: false },
     format: { with: URI::MailTo::EMAIL_REGEXP }
 
+    validates :username,
+    presence: true,
+    length: { minimum: 3 },
+    uniqueness: { case_sensitive: false }
+
     passwordless_with :email
 end
