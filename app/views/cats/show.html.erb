@@ -3,6 +3,9 @@
   <%= link_to root_path do %>
         <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
       <% end %>
+        <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
     <%= render @cat %>
 
     <% if current_user and (current_user.is_admin or current_user == @cat.user)  %>
@@ -12,7 +15,5 @@
     <%= render @cat.comments %>
 
     <%= render 'comments/form' if current_user =%>
-
-    </div>
   </div>
 </div>

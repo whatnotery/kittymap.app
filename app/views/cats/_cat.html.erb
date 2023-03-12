@@ -29,13 +29,13 @@
   
   <%= js_map [{latitude:"#{cat.latitude}", longitude:"#{cat.longitude}"}],
   height: "15vh", 
-  width: "100vw",
+  width: "100%",
   markers: {color: "#47d2dc"}, 
   tooltips: {html: true, hover: false}, 
   style: "mapbox://styles/mapbox/light-v11" if action_name == 'show' %>
 
 
-  <hr class="px-6">
+  <hr class="">
 
 
 </div>
