@@ -7,13 +7,13 @@
   <p class="">
   <% if cat.photo.representable? %>
     <% if Rails.env.production? %>
-        <%= cl_image_tag(cat.photo.key, width: 300, height: 250, crop: :fill  ) %>
+        <%= cl_image_tag(cat.photo.key, width: 250, height: 200, crop: :fill  ) %>
     <% else %>
         <%= image_tag cat.photo.representation(resize_to_limit: [250, 200]), class: "rounded-md" %>
     <% end %>
   <%end%>
   </p>
-
+ <div class="">
   <p class="font-lekton text-rose text-lg">
     <strong class="text-slateblue font-lekton">Spotted by:</strong>
     <% if current_user and current_user == cat.user %>
@@ -33,7 +33,7 @@
   markers: {color: "#47d2dc"}, 
   tooltips: {html: true, hover: false}, 
   style: "mapbox://styles/mapbox/light-v11" if action_name == 'show' %>
-
+</div>
 
   <hr class="">
 
