@@ -7,32 +7,35 @@
   <p class="">
   <% if cat.photo.representable? %>
     <% if Rails.env.production? %>
-        <%= cl_image_tag(cat.photo.key, width: 300, height: 250 ) %>
+        <%= cl_image_tag(cat.photo.key, width: 300, height: 250, crop: :fill  ) %>
     <% else %>
         <%= image_tag cat.photo.representation(resize_to_limit: [250, 200]), class: "rounded-md" %>
     <% end %>
   <%end%>
   </p>
 
-  <p>
-    <strong class="">Spotted by:</strong>
-    <%= cat.user == current_user ? 'You' : cat.user.username %>
-  </p>
-
-  <p class="">
-    <strong class="">Description:</strong>
+  <p class="font-lekton text-rose text-lg">
+    <strong class="text-slateblue font-lekton">Spotted by:</strong>
+    <% if current_user and current_user == cat.user %>
+    You
+    <% else %>
+    <%= link_to cat.user.username, user_path(cat.user.id) %>
+    <% end %>
+    <br>
+    <strong class="text-slateblue font-lekton">Description:</strong>
     <%= cat.description %>
   </p>
 
   
   <%= js_map [{latitude:"#{cat.latitude}", longitude:"#{cat.longitude}"}],
   height: "15vh", 
+  width: "100vw",
   markers: {color: "#47d2dc"}, 
   tooltips: {html: true, hover: false}, 
   style: "mapbox://styles/mapbox/light-v11" if action_name == 'show' %>
 
 
-  <hr class="pt-3">
+  <hr class="px-6">
 
 
 </div>

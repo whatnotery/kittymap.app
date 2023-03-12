@@ -1,6 +1,8 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
-
+  <%= link_to root_path do %>
+        <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
+      <% end %>
     <%= render @cat %>
 
     <% if current_user and (current_user.is_admin or current_user == @cat.user)  %>
