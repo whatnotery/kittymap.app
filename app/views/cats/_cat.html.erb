@@ -1,8 +1,12 @@
-<div id="<%= dom_id cat %>" class="">
+<div id="<%= dom_id cat %>" class="w-full" >
 
-   <h1> 
-   <%= link_to cat.alias, cat, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 2rem; hover: underline" %>
-   </h1>
+  <p class="my-5 inline text-rose font-lekton text-3xl flex justify-between">
+   <%= link_to cat.alias, cat, class: "hover:underline" %>
+
+    <% if current_user_match and controller_name == "cats" and action_name == "show" %>
+    <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_cat_path(cat) %>
+    <% end %>
+   </p>
 
   <p class="">
   <% if cat.photo.representable? %>

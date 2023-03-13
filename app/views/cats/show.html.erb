@@ -8,12 +8,9 @@
   <% end %>
     <%= render @cat %>
 
-    <% if current_user and (current_user.is_admin or current_user == @cat.user)  %>
-      <%= link_to 'Edit cat', edit_cat_path(@cat), data: { turbo_frame: 'edit-cat' }, class: "" %>
-    <% end %>
     <%= turbo_frame_tag "edit-cat", target: "_top" %>
     <%= render @cat.comments %>
 
-    <%= render 'comments/form' if current_user =%>
+    <%= render 'comments/form' if current_user%>
   </div>
 </div>

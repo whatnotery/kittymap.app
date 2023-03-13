@@ -1,8 +1,9 @@
 <div id="<%= dom_id user %>">
-  <p class="my-5 " style="color:  #f92a82; font-family: 'Lekton'; font-size: 2rem; hover: underline">
+  <p class="my-5 inline text-rose font-lekton text-3xl">
    Spotted by <br> @<%= user.username %>
-  </p>
- <% if current_user and (current_user.is_admin or current_user == user)  %>
-    <%= link_to 'Edit user', edit_user_path(user) %>
+    <% if current_user_match  %>
+    <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_user_path(user) %>
     <% end %>
+  </p>
+
 </div>
