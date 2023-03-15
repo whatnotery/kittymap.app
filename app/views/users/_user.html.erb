@@ -1,9 +1,10 @@
-<div id="<%= dom_id user %>">
-  <p class="my-5 inline text-rose font-lekton text-3xl">
-   Spotted by <br> @<%= user.username %>
-    <% if current_user_match  %>
-    <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_user_path(user) %>
+<div id="<%= dom_id user %>" >
+  <div class="text-rose font-lekton text-3xl flex justify-center items-center">
+   
+   Spotted by @<%= user.username %>
+    <% if current_user == user  %>
+    <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_user_path(user), class: "pr-2 text-sm" %>
     <% end %>
-  </p>
+  </div>
 
 </div>

@@ -1,17 +1,26 @@
-<div id="<%= dom_id comment %>">
+<div id="<%= dom_id comment %>" class="my-4 pl-6">
 
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1"><%= comment.user == current_user ? 'You' : comment.user.username %>:</strong>
-  </p>
-
-  <p class="my-5">
+   <strong>
+   <h4 class="text-slateblue font-lekton font-bold text-lg">
+    <% if comment.user == current_user %> 
+     You:
+    <% else %>
+   <%= comment.user.username.capitalize %>:
+   <% end %>
+   </h4>
+   </strong>
+   <span class="my-5 text-rose font-lekton">
     <%= comment.body %>
-  </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this comment", comment, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this comment', edit_comment_path(comment), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+       <% if current_user and current_user == comment.user or current_user_is_admin? %>
+    <%= link_to cat_comment_path(comment.cat, comment), data: { turbo_method: :delete }, class: "pl-3 text-primary" do %>
+      <%= icon('fa-solid', 'trash')%>
+    <% end %>
+    <% end %>
+  </span>
+
+  
+  
+
+   
 </div>

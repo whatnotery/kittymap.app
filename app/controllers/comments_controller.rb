@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @comment.cat, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to cat_url(@comment.cat), status: :see_other ,notice: "Comment was successfully destroyed." }
     end
   end
 
