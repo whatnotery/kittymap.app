@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :cats do
     resources :comments, except: [:index ]
+    resources :loves
   end
 
   passwordless_for :users, at: '/', as: :auth
