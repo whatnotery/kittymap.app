@@ -11,7 +11,7 @@
    </p>
    <%= turbo_frame_tag "edit_cat", target: "_top" %>
  <div class="px-4 pb-3">
-  <p class="">
+  <div class=" flex flex-row items-center font-lekton text-rose text-lg">
   <% if cat.photo.representable? %>
     <% if Rails.env.production? %>
         <%= cl_image_tag(cat.photo.key, width: 250, height: 200, crop: :fill, class: "rounded-md border-2 border-primary border-dotted")  %>
@@ -19,7 +19,25 @@
         <%= image_tag cat.photo.representation(resize_to_limit: [250, 200]), class: "rounded-md border-2 border-primary border-dotted" %>
     <% end %>
   <%end%>
-  </p>
+  <h4 class="font-lekton flex flex-col items-center text-rose text-3xl px-6" >
+  <% unless current_user %>
+    <% if cat.loves.count < 1%>
+      <%= icon('fa-regular', 'heart') %>
+    <% else %>
+    <%= icon('fa-solid', 'heart') %>
+    <% end %>
+    <% else %>
+  <% pre_love = cat.loves.find { |love| love.user_id == current_user.id} %>
+<% if pre_love %>
+  <%= button_to icon('fa-solid', 'heart'), cat_love_path(cat, pre_love), method: :delete %>
+<% else %>
+  <%= button_to icon('fa-regular', 'heart'), cat_loves_path(cat), method: :post  %>
+<% end %>
+<% end %>
+  <%= cat.loves.count if cat.loves.count > 0  %>
+  
+  </h4>
+  </div>
   <p class="font-lekton text-rose text-lg leading-5 w-7/12">
   <% unless controller_name == "users" %>
     <strong class="text-slateblue font-lekton">Spotted by:</strong>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_152004) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_003749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_152004) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "loves_count", default: 0, null: false
     t.index ["user_id"], name: "index_cats_on_user_id"
   end
 
@@ -61,6 +62,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_152004) do
     t.datetime "updated_at", null: false
     t.index ["cat_id"], name: "index_comments_on_cat_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "loves", force: :cascade do |t|
+    t.bigint "cat_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cat_id"], name: "index_loves_on_cat_id"
+    t.index ["user_id"], name: "index_loves_on_user_id"
   end
 
   create_table "passwordless_sessions", force: :cascade do |t|
@@ -92,4 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_152004) do
   add_foreign_key "cats", "users"
   add_foreign_key "comments", "cats"
   add_foreign_key "comments", "users"
+  add_foreign_key "loves", "cats"
+  add_foreign_key "loves", "users"
 end

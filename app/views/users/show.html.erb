@@ -12,7 +12,7 @@
 
     <%= render @user %>
 
-    <%= render @user.cats %>
+    <%= render @user.cats.order('loves_count DESC') %>
 
   </div>
 </div>
