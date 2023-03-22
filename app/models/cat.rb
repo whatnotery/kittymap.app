@@ -1,7 +1,8 @@
 class Cat < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy, inverse_of: :cat
+  has_many :loves, dependent: :destroy, inverse_of: :cat, counter_cache: true
 
 
   validates :alias,
