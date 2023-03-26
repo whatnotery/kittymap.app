@@ -12,7 +12,7 @@ class Cat < ApplicationRecord
 
   validates :description,
   presence: true,
-  length: { minimum: 10 }
+  length: { minimum: 6 }
 
   validates :latitude,
   presence: true

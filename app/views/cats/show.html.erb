@@ -3,14 +3,11 @@
   <%= link_to root_path do %>
     <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
   <% end %>
-  
+  <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-rose font-lekton font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
   <div class="mx-3">
- 
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-    
-    <%= render @cat %>
+     <%= render @cat %>
 
     <h4 class="font-lekton text-rose text-xl"><%= "Kitty Comments:" if current_user %></h4>
     <%= render @cat.comments %>
