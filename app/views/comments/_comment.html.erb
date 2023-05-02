@@ -1,26 +1,24 @@
 <div id="<%= dom_id comment %>" class="my-4 pl-6">
-
-   <strong>
-   <h4 class="text-slateblue font-lekton font-bold text-lg">
-    <% if comment.user == current_user %> 
-     You:
-    <% else %>
-   <%= comment.user.username.capitalize %>:
-   <% end %>
-   </h4>
-   </strong>
-   <span class="my-5 text-rose font-lekton">
-    <%= comment.body %>
-
-       <% if current_user and (current_user == comment.user or current_user_is_admin?) %>
-    <%= link_to cat_comment_path(comment.cat, comment), data: { turbo_method: :delete }, class: "pl-3 text-primary" do %>
-      <%= icon('fa-solid', 'trash')%>
+  <strong>
+    <h4 class="text-slateblue font-lekton font-bold text-lg">
+      <% if comment.user == current_user %> 
+        You:
+      <% else %>
+        <%= comment.user.username.capitalize %>:
+      <% end %>
+    </h4>
+  </strong>
+  <span class="my-5 text-rose font-lekton">
+    <span class="pl-5">
+      <%= comment.body %> 
+      ~ posted
+      <%= comment.created_at.strftime("%I:%M%p %D") %>
+    <% if current_user and (current_user == comment.user or current_user_is_admin?) %>
+      <%= link_to cat_comment_path(comment.cat, comment), data: { turbo_method: :delete }, class: "pl-1 text-primary" do %>
+        <%= icon('fa-solid', 'trash')%>
+      <% end %>
     <% end %>
-    <% end %>
+    </span>
+
   </span>
-
-  
-  
-
-   
 </div>

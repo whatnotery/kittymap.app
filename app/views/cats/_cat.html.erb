@@ -6,7 +6,7 @@
     <% if current_user and (current_user == cat.user or current_user_is_admin?) and controller_name == "cats" and action_name == "show" %>
     <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_cat_path(cat), data: { turbo_frame: :edit_cat }, class: "px-2 text-sm" %>
     <% end %>
-
+      <br>
     
    </p>
    <%= turbo_frame_tag "edit_cat", target: "_top" %>
@@ -39,6 +39,9 @@
   </h4>
   </div>
   <p class="font-lekton text-rose text-lg leading-5 w-7/12">
+  <strong class="text-slateblue font-lekton">Spotted on:</strong><br>
+  <%= cat.created_at.strftime("%B %d, %Y")%>
+  <br>
   <% unless controller_name == "users" %>
     <strong class="text-slateblue font-lekton">Spotted by:</strong>
     <% if current_user and current_user == cat.user %> 
