@@ -26,6 +26,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
+        unless @cat.user == @comment.user
+          NewCommentMailer.new_comment_email(@cat.user, @cat).deliver_now
+        end
         format.html { redirect_to cat_url(@comment.cat), notice: "Comment was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }

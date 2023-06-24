@@ -24,6 +24,7 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params.except(:address))
     @cat.user_id = current_user.id
       if @cat.save
+        NewCatMailer.new_cat_email(@cat).deliver_now
         redirect_to cat_url(@cat), notice: "#{@cat.alias} was successfully created." 
       else
         render :new, status: :unprocessable_entity
