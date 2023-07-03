@@ -1,0 +1,3 @@
+Hi <%= @user.username%>, 
+<br> 
+we're emailing you to let you know <%=link_to @cat_lover.username, user_url(@cat_lover)%> loved <%= link_to @cat.alias, cat_url(@cat) %>, a cat you spotted on KittyMap.app.

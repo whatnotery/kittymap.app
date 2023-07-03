@@ -8,6 +8,7 @@ class LovesController < ApplicationController
             nil
           else
             @cat.loves.create(user_id: current_user.id)
+            NewLoveMailer.new_love_email(@cat.user, @cat, current_user).deliver_now
           end
           redirect_back(fallback_location: root_path)
     end
