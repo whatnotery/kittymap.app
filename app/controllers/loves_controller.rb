@@ -7,10 +7,13 @@ class LovesController < ApplicationController
         if already_loved?
             nil
           else
-            @cat.loves.create(user_id: current_user.id)
-            NewLoveMailer.new_love_email(@cat.user, @cat, current_user).deliver_now
+            @love = @cat.loves.create(user_id: current_user.id)
+            if @love.save
+              NewLoveMailer.new_love_email(@cat.user, @cat, current_user).deliver_now
+              redirect_back(fallback_location: root_path)
+            end
           end
-          redirect_back(fallback_location: root_path)
+  
     end
 
     def destroy
