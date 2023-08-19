@@ -23,6 +23,7 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params.except(:address))
     @cat.user_id = current_user.id
+    @cat.slug = cat_params[:alias].parameterize
       if @cat.save
         NewCatMailer.new_cat_email(@cat).deliver_now
         redirect_to cat_url(@cat), notice: "#{@cat.alias} was successfully created." 
@@ -49,7 +50,7 @@ class CatsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cat
-      @cat = Cat.find(params[:id])
+      @cat = Cat.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

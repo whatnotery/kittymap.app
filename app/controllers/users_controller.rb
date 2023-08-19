@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
+    @user.slug = user_params[:username].parameterize
     respond_to do |format|
       if @user.save
         sign_in @user
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.includes(:cats).find(params[:id])
+      @user = User.includes(:cats).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

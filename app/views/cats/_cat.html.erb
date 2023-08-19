@@ -2,12 +2,10 @@
 
   <p class="text-rose font-lekton text-3xl flex items-center ">
    <%= link_to cat.alias.titleize, cat, class: "hover:underline my-1 pl-3" %>
-  
     <% if current_user and (current_user == cat.user or current_user_is_admin?) and controller_name == "cats" and action_name == "show" %>
     <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_cat_path(cat), data: { turbo_frame: :edit_cat }, class: "px-2 text-sm" %>
     <% end %>
       <br>
-    
    </p>
    <%= turbo_frame_tag "edit_cat", target: "_top" %>
  <div class="px-4 pb-3">
@@ -47,7 +45,7 @@
     <% if current_user and current_user == cat.user %> 
     <%= link_to "you", user_path(cat.user.id) %>
     <% else %>
-    <%= link_to cat.user.username, user_path(cat.user.id) %>
+    <%= link_to cat.user.username, user_path(cat.user.username) %>
     <% end %>
     <% end %>
     <br>

@@ -1,10 +1,8 @@
 <div id="<%= dom_id user %>" >
   <div class="text-rose font-lekton text-3xl flex justify-center items-center">
-   
    Spotted by @<%=link_to user.username, user.social_media_url %>
     <% if current_user == user  %>
     <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_user_path(user), class: "px-2 text-sm" %>
     <% end %>
   </div>
-
 </div>

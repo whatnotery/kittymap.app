@@ -8,10 +8,8 @@
   <% end %>
   <div class="mx-3 mb-4">
      <%= render @cat %>
-
     <h4 class="font-lekton text-rose text-xl"><%= "Kitty Comments:" if @cat.comments.present? or current_user %></h4>
     <%= render @cat.comments %>
-
     <%= render 'comments/form' if current_user%>
 
   </div>

@@ -39,6 +39,7 @@ gem 'cloudinary'
 gem "mapkick-rb"
 gem "rack-cors"
 gem "font-awesome-sass", "~> 6.3.0"
+gem 'friendly_id', '~> 5.4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
