@@ -43,7 +43,7 @@
   <% unless controller_name == "users" %>
     <strong class="text-slateblue font-lekton">Spotted by:</strong>
     <% if current_user and current_user == cat.user %> 
-    <%= link_to "you", user_path(cat.user.id) %>
+    <%= link_to "you", user_path(cat.user.username) %>
     <% else %>
     <%= link_to cat.user.username, user_path(cat.user.username) %>
     <% end %>
