@@ -32,7 +32,6 @@ gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
-gem "leaflet-rails"
 gem 'image_processing', '~> 1.2'
 gem "passwordless"
 gem 'cloudinary'
