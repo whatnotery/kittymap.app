@@ -3,7 +3,7 @@ class CatsController < ApplicationController
 
   # GET /cats or /cats.json
   def index
-    @cats = Cat.all.order(updated_at: :desc)
+    @cats = Cat.all.order('loves_count DESC')
   end
 
   # GET /cats/1 or /cats/1.json
@@ -24,7 +24,8 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params.except(:address))
     @cat.user_id = current_user.id
       if @cat.save
-        redirect_to cats_url, notice: "Cat was successfully created." 
+        NewCatMailer.new_cat_email(@cat).deliver_now
+        redirect_to cat_url(@cat), notice: "#{@cat.alias} was successfully created." 
       else
         render :new, status: :unprocessable_entity
       end
@@ -33,7 +34,7 @@ class CatsController < ApplicationController
   # PATCH/PUT /cats/1 or /cats/1.json
   def update
     if @cat.update(cat_params.except(:address))
-      redirect_to cat_url(@cat.alias), notice: "Cat was successfully updated." 
+      redirect_to cat_url(@cat), notice: "#{@cat.alias} was successfully updated." 
     else
       render :edit, status: :unprocessable_entity 
     end

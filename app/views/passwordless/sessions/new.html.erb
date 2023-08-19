@@ -1,5 +1,15 @@
+<div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
+
+ <%= link_to root_path do %>
+    <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
+  <% end %>
+  
+  <h1 class="font-bold text-3xl font-lekton text-rose">Sign In</h1>
+
 <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |f| %>
   <% email_field_name = :"passwordless[#{@email_field}]" %>
-  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil) %>
-  <%= f.submit I18n.t('passwordless.sessions.new.submit') %>
+  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), class: "font-lekton text-rose block shadow rounded-md border-2 border-primary border-dotted outline-primary px-3 py-2 mt-2 w-full" %>
+  <%= f.submit "get a magic sign-in link", class: "font-lekton text-rose rounded-lg mt-6 py-3 px-5 border border-dotted border-slateblue font-medium cursor-pointer" %>
 <% end %>
+
+</div>

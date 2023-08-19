@@ -1,4 +1,4 @@
-# KittyMap.app
+# [KittyMap.app](https://kittymap.app)
 
 This is a work in progress web app that will allow for the geotagging of cats you see out in public and allow others to comment on them!
 

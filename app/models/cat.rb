@@ -1,7 +1,8 @@
 class Cat < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy, inverse_of: :cat
+  has_many :loves, dependent: :destroy, inverse_of: :cat, counter_cache: true
 
 
   validates :alias,
@@ -11,7 +12,7 @@ class Cat < ApplicationRecord
 
   validates :description,
   presence: true,
-  length: { minimum: 10 }
+  length: { minimum: 6 }
 
   validates :latitude,
   presence: true

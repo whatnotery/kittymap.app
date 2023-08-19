@@ -1,24 +1,26 @@
 
 <div class="h-screen flex flex-col md:flex-row bg-background">
-  <div id="cats" class="md:float-left h-full md:w-1/4 w-full justify-around flex-col overflow-auto">
-    <nav class="sticky top-0 bg-background flex flex-col">
+  <div id="cats" class="md:float-left h-full md:w-3/10 lg:w-2/6 w-full justify-around flex-col overflow-x-auto">
+    <nav class="sticky top-0 bg-background flex flex-col items-center">
       <%= link_to root_path do %>
         <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
       <% end %>
-      <div class='flex justify-around w-full'>
-      <%  if current_user.present? %>
-        <%= link_to "New Cat", new_cat_path, data: { turbo_frame: 'new-cat' }, style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem", id: "new-cat-button"%>
-        <%= link_to "Sign Out", "/sign_out", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
+      <div class='flex justify-around w-full text-rose font-lekton text-3xl'>
+      <%  if current_user %>
+        <%= link_to "Add Cat", new_cat_path, data: { turbo_frame: 'new-cat' }, id: "new-cat-button"%>
+        <%= link_to "Sign Out", "/sign_out" %>
       <% else %>
-        <%= link_to "Sign In", "/sign_in", style: "color:  #f92a82; font-family: 'Lekton'; font-size: 1.75rem" %>
-        <%= link_to "Sign Up", new_user_path, style: "color:  #f92a82; font-family: 'Lekton';font-size: 1.75rem" %> 
+        <%= link_to "Sign In", "/sign_in" %>
+        <%= link_to "Sign Up", new_user_path %> 
       <% end %>
-        <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
     </div>
-    <%= turbo_frame_tag "new-cat", target: "_top" %>
+    <% if notice.present? %>
+      <p class="py-2 px-5 bg-green-50 mb-5 text-rose font-lekton font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
     </nav>
+    
+    <%= turbo_frame_tag "new-cat", target: "_top" %>
+
     <div class="">
     <%= render @cats %>
     </div>

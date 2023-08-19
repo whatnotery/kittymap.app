@@ -21,11 +21,15 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
+    @cat = Cat.find(params[:cat_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.cat, notice: "Comment was successfully created." }
+        unless @cat.user == @comment.user
+          NewCommentMailer.new_comment_email(@cat.user, @cat).deliver_now
+        end
+        format.html { redirect_to cat_url(@comment.cat), notice: "Comment was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -36,7 +40,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment.cat, notice: "Comment was successfully updated." }
+        format.html { redirect_to cat_url(@comment.cat), notice: "Comment was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -48,7 +52,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @comment.cat, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to cat_url(@comment.cat), status: :see_other ,notice: "Comment was successfully destroyed." }
     end
   end
 
