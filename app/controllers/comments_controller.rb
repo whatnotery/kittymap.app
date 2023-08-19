@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @cat = Cat.find(params[:cat_id])
+    @cat = Cat.friendly.find(params[:cat_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     respond_to do |format|

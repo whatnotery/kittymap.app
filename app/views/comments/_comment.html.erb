@@ -2,9 +2,9 @@
   <strong>
     <h4 class="text-slateblue font-lekton font-bold text-lg">
       <% if comment.user == current_user %> 
-        You:
+        <%= link_to "You", user_path(comment.user.username) %>
       <% else %>
-        <%= comment.user.username.capitalize %>:
+        <%=link_to comment.user.username.capitalize, user_path(comment.user.username) %>:
       <% end %>
     </h4>
   </strong>

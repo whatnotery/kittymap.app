@@ -30,7 +30,7 @@ class LovesController < ApplicationController
       end
 
     def find_cat
-        @cat = Cat.find(params[:cat_id])
+      @cat = Cat.friendly.find(params[:cat_id])
     end
 
     def find_love
