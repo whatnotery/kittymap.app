@@ -1,3 +1,6 @@
+<% content_for :meta_title, "Kitty Map" %>
+<% content_for :meta_description, "Geotag your cat sightings!" %>
+<% content_for :meta_image, image_url("logocat.png") %>
 
 <div class="h-screen flex flex-col md:flex-row bg-background">
   <div id="cats" class="md:float-left h-full md:w-3/10 lg:w-2/6 w-full justify-around flex-col overflow-x-auto">
@@ -6,27 +9,22 @@
         <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
       <% end %>
       <div class='flex justify-around w-full text-rose font-lekton text-3xl'>
-      <%  if current_user %>
-        <%= link_to "Add Cat", new_cat_path, data: { turbo_frame: 'new-cat' }, id: "new-cat-button"%>
-        <%= link_to "Sign Out", "/sign_out" %>
-      <% else %>
-        <%= link_to "Sign In", "/sign_in" %>
-        <%= link_to "Sign Up", new_user_path %> 
+        <%  if current_user %>
+          <%= link_to "Add Cat", new_cat_path, data: { turbo_frame: 'new-cat' }, id: "new-cat-button"%>
+          <%= link_to "Sign Out", "/sign_out" %>
+        <% else %>
+          <%= link_to "Sign In", "/sign_in" %>
+          <%= link_to "Sign Up", new_user_path %> 
+        <% end %>
+      </div>
+      <% if notice.present? %>
+        <p class="py-2 px-5 bg-green-50 mb-5 text-rose font-lekton font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
       <% end %>
-    </div>
-    <% if notice.present? %>
-      <p class="py-2 px-5 bg-green-50 mb-5 text-rose font-lekton font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
     </nav>
-    
     <%= turbo_frame_tag "new-cat", target: "_top" %>
-
     <div class="">
-    <%= render @cats %>
+      <%= render @cats %>
     </div>
-</div>
-
-
-<%= js_map map_data, height:"100vh", width: "100%", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
-
+  </div>
+  <%= js_map map_data, height:"100vh", width: "100%", markers: {color: "#47d2dc"}, tooltips: {html: true, hover: false}, style: "mapbox://styles/mapbox/light-v11" %>
 </div>
