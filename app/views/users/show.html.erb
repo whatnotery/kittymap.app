@@ -11,6 +11,6 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
     <%= render @user %>
-    <%= render @user.cats.order('loves_count DESC') %>
+    <%= render @user.cats.left_joins(:loves).group(:id).order('COUNT(loves.id) DESC') %>
   </div>
 </div>
