@@ -25,9 +25,9 @@
           <%= icon('fa-solid', 'heart') %>
         <% end %>
       <% else %>
-        <% pre_love = cat.loves.find { |love| love.user_id == current_user.id} %>
-        <% if pre_love %>
-          <%= button_to icon('fa-solid', 'heart'), cat_love_path(cat, pre_love), method: :delete %>
+        <% existing_love = Love.find_by(user_id: current_user.id, cat_id: cat.id ) %>
+        <% if existing_love %>
+          <%= button_to icon('fa-solid', 'heart'), cat_love_path(cat, existing_love), method: :delete %>
         <% else %>
           <%= button_to icon('fa-regular', 'heart'), cat_loves_path(cat), method: :post  %>
         <% end %>

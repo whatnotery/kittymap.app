@@ -11,19 +11,14 @@ class LovesController < ApplicationController
     end
 
     def destroy
-      if !(already_loved?)
-        nil
-      else
-        @love.destroy
-      end 
-      redirect_to root_path
+        @love.destroy if already_loved?
+        redirect_back(fallback_location: root_path)    
     end
 
     private
 
     def already_loved?
-      Love.where(user_id: current_user.id, cat_id:
-      params[:cat_id]).exists?
+      Love.where(user_id: current_user.id, cat_id: @cat.id).exists?
     end
 
     def find_cat
