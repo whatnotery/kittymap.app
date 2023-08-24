@@ -3,7 +3,7 @@ class CatsController < ApplicationController
 
   # GET /cats or /cats.json
   def index
-    @cats = Cat.all.order('loves_count DESC')
+    @cats = Cat.all.left_joins(:loves).group(:id).order('COUNT(loves.id) DESC')
   end
 
   # GET /cats/1 or /cats/1.json
