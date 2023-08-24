@@ -100,6 +100,8 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.3.0)
       sassc (~> 2.0)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -119,8 +121,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    leaflet-rails (1.9.3)
-      rails (>= 4.2.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -269,10 +269,10 @@ DEPENDENCIES
   cloudinary
   debug
   font-awesome-sass (~> 6.3.0)
+  friendly_id (~> 5.4.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
-  leaflet-rails
   mapkick-rb
   passwordless
   pg (~> 1.1)

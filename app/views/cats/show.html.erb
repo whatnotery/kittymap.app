@@ -1,5 +1,8 @@
-<div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
+<% content_for :meta_title, "Kitty Map - #{@cat.alias}" %>
+<% content_for :meta_description, "#{@cat.alias} was spotted on KittyMap.app" %>
+<% content_for :meta_image, url_for(@cat.photo) %>
 
+<div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
   <%= link_to root_path do %>
     <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
   <% end %>
@@ -7,12 +10,9 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-rose font-lekton font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
   <div class="mx-3 mb-4">
-     <%= render @cat %>
-
+    <%= render @cat %>
     <h4 class="font-lekton text-rose text-xl"><%= "Kitty Comments:" if @cat.comments.present? or current_user %></h4>
     <%= render @cat.comments %>
-
     <%= render 'comments/form' if current_user%>
-
   </div>
 </div>

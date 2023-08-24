@@ -2,9 +2,9 @@
   <strong>
     <h4 class="text-slateblue font-lekton font-bold text-lg">
       <% if comment.user == current_user %> 
-        You:
+        <%= link_to "You", user_path(comment.user.username) %>
       <% else %>
-        <%= comment.user.username.capitalize %>:
+        <%=link_to comment.user.username.capitalize, user_path(comment.user.username) %>:
       <% end %>
     </h4>
   </strong>
@@ -12,7 +12,7 @@
     <span class="pl-5">
       <%= comment.body %> 
       ~ posted
-      <%= comment.created_at.strftime("%I:%M%p %D") %>
+      <%= comment.created_at.localtime.strftime("%I:%M%p %D") %>
     <% if current_user and (current_user == comment.user or current_user_is_admin?) %>
       <%= link_to cat_comment_path(comment.cat, comment), data: { turbo_method: :delete }, class: "pl-1 text-primary" do %>
         <%= icon('fa-solid', 'trash')%>
