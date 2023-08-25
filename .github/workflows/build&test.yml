@@ -31,6 +31,8 @@ jobs:
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
         run: bundle install
+      - name: Compile Assets
+        run: bundle exec rails assets:precompile
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
