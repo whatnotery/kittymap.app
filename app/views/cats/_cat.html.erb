@@ -1,7 +1,7 @@
 <div id="<%= dom_id cat %>" class="w-full items-center" >
 
   <p class="text-rose font-lekton text-3xl flex items-center ">
-   <%= link_to cat.alias.titleize, cat, class: "hover:underline my-1 pl-3" %>
+   <%= link_to cat.name.titleize, cat, class: "hover:underline my-1 pl-3" %>
     <% if current_user and (current_user == cat.user or current_user_is_admin?) and controller_name == "cats" and action_name == "show" %>
     <%= link_to icon('fa fa-pencil-square-o', 'edit'), edit_cat_path(cat), data: { turbo_frame: :edit_cat }, class: "px-2 text-sm" %>
     <% end %>

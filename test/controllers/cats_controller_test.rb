@@ -17,7 +17,7 @@ class CatsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cat" do
     assert_difference("Cat.count") do
-      post cats_url, params: { cat: { alias: @cat.alias, description: @cat.description, latitude: @cat.latitude, longitude: @cat.longitude, user_id_id: @cat.user_id_id } }
+      post cats_url, params: {cat: {name: @cat.name, description: @cat.description, latitude: @cat.latitude, longitude: @cat.longitude, user_id_id: @cat.user_id_id}}
     end
 
     assert_redirected_to cat_url(Cat.last)
@@ -34,7 +34,7 @@ class CatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cat" do
-    patch cat_url(@cat), params: { cat: { alias: @cat.alias, description: @cat.description, latitude: @cat.latitude, longitude: @cat.longitude, user_id_id: @cat.user_id_id } }
+    patch cat_url(@cat), params: {cat: {name: @cat.name, description: @cat.description, latitude: @cat.latitude, longitude: @cat.longitude, user_id_id: @cat.user_id_id}}
     assert_redirected_to cat_url(@cat)
   end
 

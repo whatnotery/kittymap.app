@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-include Passwordless::ControllerHelpers
-  helper_method :current_user, :current_user_is_admin? 
+  include Passwordless::ControllerHelpers
+  helper_method :current_user, :current_user_is_admin?
 
   private
 
@@ -10,7 +10,7 @@ include Passwordless::ControllerHelpers
 
   def require_user!
     return if current_user
-    redirect_to root_path, flash: { error: 'Please sign in' }
+    redirect_to root_path, flash: {error: "Please sign in"}
   end
 
   def current_user_is_admin?

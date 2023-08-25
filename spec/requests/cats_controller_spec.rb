@@ -1,7 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "CatsControllers", type: :request do
   describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+    it "should return the index view" do
+      get "/"
+      expect(response).to render_template(:index)
+    end
   end
 end

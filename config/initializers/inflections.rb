@@ -15,5 +15,5 @@
 #   inflect.acronym "RESTful"
 # end
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-    inflect.irregular 'love', 'loves'
+  inflect.irregular "love", "loves"
 end

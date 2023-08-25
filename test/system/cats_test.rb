@@ -14,7 +14,7 @@ class CatsTest < ApplicationSystemTestCase
     visit cats_url
     click_on "New cat"
 
-    fill_in "Alias", with: @cat.alias
+    fill_in "name", with: @cat.name
     fill_in "Description", with: @cat.description
     fill_in "Latitude", with: @cat.latitude
     fill_in "Longitude", with: @cat.longitude
@@ -29,7 +29,7 @@ class CatsTest < ApplicationSystemTestCase
     visit cat_url(@cat)
     click_on "Edit this cat", match: :first
 
-    fill_in "Alias", with: @cat.alias
+    fill_in "name", with: @cat.name
     fill_in "Description", with: @cat.description
     fill_in "Latitude", with: @cat.latitude
     fill_in "Longitude", with: @cat.longitude

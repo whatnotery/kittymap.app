@@ -1,9 +1,8 @@
 require_relative "boot"
 
 require "rails/all"
-require 'rack'
-require 'rack/cors'
-
+require "rack"
+require "rack/cors"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,7 +14,6 @@ module Lexcats
     config.load_defaults 7.0
 
     config.assets.css_compressor = nil
-
 
     # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
     #   allow do
