@@ -5,5 +5,6 @@ FactoryBot.define do
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
     user { association :user }
+    photo { Rack::Test::UploadedFile.new("spec/support/cat.jpg") }
   end
 end
