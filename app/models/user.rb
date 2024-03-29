@@ -2,8 +2,8 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username
 
-  has_many :cats, inverse_of: :user
-  has_many :comments, inverse_of: :user
+  has_many :cats, inverse_of: :user, dependent: :destroy
+  has_many :comments, inverse_of: :user, dependent: :destroy
   has_many :loves, dependent: :destroy
 
   validates :email,

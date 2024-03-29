@@ -1,22 +1,9 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
-  # GET /comments or /comments.json
-  def index
-    @comments = Comment.all
-  end
-
-  # GET /comments/1 or /comments/1.json
-  def show
-  end
-
   # GET /comments/new
   def new
     @comment = Comment.new
-  end
-
-  # GET /comments/1/edit
-  def edit
   end
 
   # POST /comments or /comments.json
@@ -52,7 +39,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to cat_url(@comment.cat), status: :see_other, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to cat_url(@comment.cat), status: :see_other, notice: "Comment was successfully deleted." }
     end
   end
 

@@ -3,7 +3,7 @@ class CatsController < ApplicationController
 
   # GET /cats or /cats.json
   def index
-    @cats = Cat.all.left_joins(:loves).group(:id).order("COUNT(loves.id) DESC")
+    @cats = Cat.all.ordered_by_love
   end
 
   # GET /cats/1 or /cats/1.json
@@ -26,7 +26,7 @@ class CatsController < ApplicationController
     @cat.slug = cat_params[:name].parameterize
     if @cat.save
       NewCatMailer.new_cat_email(@cat).deliver_now
-      redirect_to cat_url(@cat), notice: "#{@cat.name} was successfully created."
+      redirect_to cat_url(@cat), notice: "#{@cat.name} was successfully added."
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class CatsController < ApplicationController
   # DELETE /cats/1 or /cats/1.json
   def destroy
     @cat.destroy
-    redirect_to cats_url, notice: "Cat was successfully destroyed."
+    redirect_to cats_url, notice: "Cat was successfully removed."
   end
 
   private

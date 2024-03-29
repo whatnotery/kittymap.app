@@ -21,4 +21,11 @@ class Cat < ApplicationRecord
 
   validates :latitude,
     presence: true
+
+  scope :ordered_by_love, -> {
+    left_joins(:loves)
+      .select("cats.*, COUNT(loves.id) AS love_count")
+      .group("cats.id")
+      .order("love_count DESC")
+  }
 end
