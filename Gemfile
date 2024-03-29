@@ -86,3 +86,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "solargraph", "~> 0.50.0"
+
+gem "rufo", "~> 0.17.1"

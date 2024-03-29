@@ -1,0 +1,2 @@
+ignore:
+  - Gemfile.lock

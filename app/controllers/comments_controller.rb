@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
-
+  before_action :set_cat, only: :create
   # GET /comments/new
   def new
     @comment = Comment.new
@@ -8,14 +8,11 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @cat = Cat.friendly.find(params[:cat_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
-        unless @cat.user == @comment.user
-          NewCommentMailer.new_comment_email(@cat.user, @cat).deliver_now
-        end
+        NewCommentMailer.new_comment_email(@cat.user, @cat).deliver_now unless @cat.user != @comment.user
         format.html { redirect_to cat_url(@comment.cat), notice: "Comment was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +42,10 @@ class CommentsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  def set_cat
+    @cat = Cat.friendly.find(params[:cat_id])
+  end
+
   def set_comment
     @comment = Comment.find(params[:id])
   end
