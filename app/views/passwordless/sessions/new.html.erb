@@ -1,13 +1,15 @@
 
 <%= turbo_frame_tag "login" do %>
+<%= turbo_frame_tag "email" do %>
   <div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
 
   <h4 class=" text-3xl font-lekton text-rose">email:</h4>
 
-<%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: "false" } do |f| %>
+<%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo_frame: "email" } do |f| %>
   <% email_field_name = :"passwordless[#{@email_field}]" %>
   <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), class: "font-lekton text-rose block shadow rounded-md border-2 border-primary border-dotted outline-primary px-3 py-2 mt-2 w-full" %>
   <%= f.submit "get a magic sign-in link", class: "font-lekton text-rose rounded-lg mt-6 py-3 px-5 border border-dotted border-slateblue font-medium cursor-pointer" %>
 <% end %>
 </div>
+<% end %>
 <% end %>

@@ -1,16 +1,14 @@
 <% content_for :meta_title, "Kitty Map - #{@user.username}" %>
 <% content_for :meta_description, "Cats spotted by #{@user.username} on KittyMap.app" %>
 <% content_for :meta_image, image_url("logocat.png") %>
+    <%= turbo_frame_tag "cat" do %>
 
-<div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
-  <%= link_to root_path do %>
-    <%= image_tag asset_path("kittymapapp.png"), class:"object-cover", alt: 'kittymap.app' %>
-  <% end %>
+<%= turbo_frame_tag "user" do %>
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
     <%= render @user %>
-    <%= render @user.cats.ordered_by_love %>
-  </div>
 </div>
+<% end %>
+<% end %>

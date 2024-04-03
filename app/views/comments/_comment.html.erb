@@ -1,11 +1,7 @@
 <div id="<%= dom_id comment %>" class="my-4 pl-6">
   <strong>
     <h4 class="text-slateblue font-lekton font-bold text-lg">
-      <% if comment.user == current_user %> 
-        <%= link_to "You", user_path(comment.user.username) %>
-      <% else %>
-        <%= link_to comment.user.username.capitalize, user_path(comment.user.username) %>:
-      <% end %>
+     <%= link_to comment.user.username.capitalize, user_path(comment.user.username), data: { turbo_frame: "user" } %>
     </h4>
   </strong>
   <span class="my-5 text-rose font-lekton">

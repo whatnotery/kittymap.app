@@ -41,9 +41,9 @@
     <% unless controller_name == "users" %>
       <strong class="text-slateblue font-lekton">Spotted by:</strong>
       <% if current_user and current_user == cat.user %> 
-        <%= link_to "you", user_path(cat.user.username) %>
+        <%= link_to "you", user_path(cat.user.username), data: { turbo_frame: "user" } %>
       <% else %>
-        <%= link_to cat.user.username, user_path(cat.user.username) %>
+        <%= link_to cat.user.username, user_path(cat.user.username), data: { turbo_frame: "user" } %>
       <% end %>
     <% end %>
     <br>

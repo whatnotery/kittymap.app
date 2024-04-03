@@ -9,7 +9,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "cats#index"
-  get "/sign_up", to: "users#new", constraints: lambda { |req|
-                                                  req.path.exclude? "rails/active_storage"
-                                                }
+  get "/sign_up", to: "users#new", constraints: lambda { |req| req.path.exclude? "rails/active_storage" }
 end
