@@ -2,6 +2,8 @@
 <%= turbo_frame_tag "login" do %>
   <div class="mx-auto md:w-2/3 w-full flex flex-col items-center">
 
+  <h4 class=" text-3xl font-lekton text-rose">email:</h4>
+
 <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: "false" } do |f| %>
   <% email_field_name = :"passwordless[#{@email_field}]" %>
   <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), class: "font-lekton text-rose block shadow rounded-md border-2 border-primary border-dotted outline-primary px-3 py-2 mt-2 w-full" %>
