@@ -1,4 +1,4 @@
-<%= form_with model:[@cat, @cat.comments.build] do |form| %>
+<%= form_with model: [@cat, @cat.comments.build], data: { turbo_frame: "cat" } do |form| %>
   
  
   <%= form.hidden_field :cat_id, value: @cat.id %>
