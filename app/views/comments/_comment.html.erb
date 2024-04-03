@@ -4,21 +4,18 @@
       <% if comment.user == current_user %> 
         <%= link_to "You", user_path(comment.user.username) %>
       <% else %>
-        <%=link_to comment.user.username.capitalize, user_path(comment.user.username) %>:
+        <%= link_to comment.user.username.capitalize, user_path(comment.user.username) %>:
       <% end %>
     </h4>
   </strong>
   <span class="my-5 text-rose font-lekton">
-    <span class="pl-5">
       <%= comment.body %> 
-      ~ posted
-      <%= comment.created_at.localtime.strftime("%I:%M%p %D") %>
+      <br>
+      ~ posted <%= comment.created_at.localtime.strftime("%I:%M%p %D") %>
     <% if current_user and (current_user == comment.user or current_user_is_admin?) %>
       <%= link_to cat_comment_path(comment.cat, comment), data: { turbo_method: :delete }, class: "pl-1 text-primary" do %>
-        <%= icon('fa-solid', 'trash')%>
+        <%= icon("fa-solid", "trash") %>
       <% end %>
     <% end %>
-    </span>
-
   </span>
 </div>

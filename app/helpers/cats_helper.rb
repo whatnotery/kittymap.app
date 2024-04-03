@@ -5,7 +5,7 @@ module CatsHelper
       cat_hash = {}
       cat_hash["latitude"] = cat.latitude.to_f
       cat_hash["longitude"] = cat.longitude.to_f
-      cat_hash["tooltip"] = "😻 <a href='/cats/#{cat.id}'>#{cat.name}</a> 😻"
+      cat_hash["tooltip"] = link_to "😻 #{cat.name.titleize} 😻", cat, class: "hover:underline my-1 pl-3", data: {turbo_frame: "cat"}
       lat_lon_arr << cat_hash
     end
     if Cat.all.empty?
