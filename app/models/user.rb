@@ -16,5 +16,11 @@ class User < ApplicationRecord
     length: {minimum: 3},
     uniqueness: {case_sensitive: false}
 
+  validates :social_media_url,
+    uniqueness: {case_sensitive: false},
+    format: {with: URI::DEFAULT_PARSER.make_regexp, message: "Invalid URL format"},
+    allow_nil: true,
+    allow_blank: true
+
   passwordless_with :email
 end
